@@ -1,60 +1,121 @@
 # Conecta
 
-**Marketplace de serviços técnicos de informática**
+**Plataforma de conexão entre clientes e profissionais de serviços técnicos de informática.**
 
-A Conecta é uma plataforma digital desenvolvida com o objetivo de aproximar pessoas que precisam de serviços técnicos de informática de profissionais que oferecem esse tipo de atendimento.
+A Conecta é uma aplicação web desenvolvida como projeto acadêmico com o objetivo de facilitar a conexão entre pessoas que precisam de serviços técnicos de informática e profissionais que oferecem esse tipo de atendimento.
 
-A proposta é facilitar a busca por profissionais, permitir a visualização de seus perfis e especialidades e organizar a solicitação e o envio de orçamentos em um único ambiente.
+A plataforma permite que clientes encontrem profissionais, consultem seus perfis e solicitem orçamentos. Os profissionais, por sua vez, podem receber solicitações e apresentar propostas de serviço.
 
-O projeto foi desenvolvido como parte de uma atividade acadêmica da disciplina de Startups da Universidade Católica de Brasília (UCB).
+## 🌐 Demonstração online
 
-> **Status do projeto:** MVP acadêmico e demonstrativo. O sistema implementa o fluxo principal de solicitação e envio de propostas, mas não representa uma operação comercial em produção.
+A aplicação está disponível para acesso no seguinte endereço:
 
-## Funcionalidades
+**[Acessar Conecta](https://conecta-gilt-two.vercel.app/)**
 
-O MVP contempla dois tipos de usuários: clientes e profissionais.
+## 📌 Sobre o projeto
 
-### Para clientes
-- Visualização e busca de profissionais cadastrados.
-- Consulta aos perfis, apresentações e especialidades dos profissionais.
-- Cadastro e autenticação de usuários.
-- Solicitação de orçamentos para serviços técnicos.
+Encontrar profissionais de confiança para resolver problemas relacionados à informática pode ser uma tarefa difícil. Muitas vezes, clientes precisam recorrer a indicações informais, enquanto profissionais autônomos enfrentam dificuldades para divulgar seus serviços e alcançar novos clientes.
+
+A Conecta propõe uma solução digital para aproximar esses dois públicos, centralizando a descoberta de profissionais e o processo inicial de solicitação e apresentação de orçamentos.
+
+O projeto foi desenvolvido como um MVP (*Minimum Viable Product*), priorizando as funcionalidades essenciais para demonstrar a proposta de valor da plataforma.
+
+## 🎯 Objetivos
+
+- Facilitar a busca por profissionais de informática.
+- Disponibilizar perfis com informações sobre os serviços oferecidos.
+- Permitir que clientes solicitem orçamentos.
+- Possibilitar que profissionais recebam solicitações e enviem propostas.
+- Centralizar o processo inicial de conexão entre clientes e profissionais.
+
+## ⚙️ Funcionalidades do MVP
+
+### 👤 Para clientes
+
+- Cadastro e autenticação na plataforma.
+- Navegação pelo catálogo de profissionais.
+- Consulta aos perfis e informações dos profissionais.
+- Solicitação de orçamentos.
 - Acompanhamento das solicitações realizadas.
 - Visualização das propostas recebidas.
 
-### Para profissionais
-- Cadastro e autenticação de profissionais.
-- Criação e atualização do perfil profissional.
-- Apresentação de especialidades e categorias de serviços.
-- Visualização das solicitações de orçamento recebidas.
-- Envio de propostas com valores e mensagens.
-- Acompanhamento das solicitações atendidas.
+### 🧑‍🔧 Para profissionais
 
-## Tecnologias utilizadas
+- Cadastro e autenticação na plataforma.
+- Acesso à área profissional.
+- Visualização e gerenciamento das solicitações recebidas.
+- Elaboração e envio de propostas de orçamento.
+- Acompanhamento das propostas enviadas.
 
-| Tecnologia | Aplicação |
+### 🔐 Segurança e controle de acesso
+
+- Autenticação integrada ao Supabase.
+- Controle de acesso conforme o perfil do usuário.
+- Políticas de segurança no banco de dados utilizando Row Level Security (RLS).
+- Proteção das operações de acordo com as permissões de cada usuário.
+
+## 🖥️ Tecnologias utilizadas
+
+| Tecnologia | Finalidade |
 |---|---|
-| [Next.js](https://nextjs.org/) | Framework para desenvolvimento da aplicação web |
-| [React](https://react.dev/) | Construção da interface |
-| [TypeScript](https://www.typescriptlang.org/) | Tipagem estática |
-| [Tailwind CSS](https://tailwindcss.com/) | Estilização da interface |
-| [Supabase](https://supabase.com/) | Autenticação e banco de dados |
-| [PostgreSQL](https://www.postgresql.org/) | Banco de dados relacional utilizado pelo Supabase |
-| [Git](https://git-scm.com/) e [GitHub](https://github.com/) | Controle de versão e hospedagem do código |
+| Next.js | Framework principal da aplicação |
+| React | Construção da interface |
+| TypeScript | Tipagem estática e organização do código |
+| Tailwind CSS | Estilização e responsividade |
+| Supabase | Backend, autenticação e banco de dados PostgreSQL |
+| Git | Controle de versão |
+| GitHub | Hospedagem do repositório |
+| Vercel | Hospedagem e publicação da aplicação |
 
-## Como executar o projeto
+## 🏗️ Arquitetura e funcionamento
 
-### 1. Pré-requisitos
+A Conecta utiliza uma arquitetura baseada em Next.js e Supabase.
 
-Antes de começar, certifique-se de ter instalado:
+O Next.js é responsável pela interface, navegação e funcionalidades da aplicação. O Supabase fornece os serviços de autenticação e persistência dos dados, permitindo que os diferentes perfis de usuários interajam com a plataforma.
 
-- [Node.js](https://nodejs.org/) (versão LTS recomendada).
-- [Git](https://git-scm.com/).
-- Um projeto criado no [Supabase](https://supabase.com/).
+O fluxo principal do MVP funciona da seguinte maneira:
 
-### 2. Clonar o repositório
+1. O usuário acessa a plataforma e realiza seu cadastro ou login.
+2. O cliente navega pelo catálogo e seleciona um profissional.
+3. O cliente envia uma solicitação de orçamento.
+4. O profissional recebe e consulta a solicitação.
+5. O profissional elabora e envia uma proposta.
+6. O cliente pode consultar a proposta recebida.
 
-Abra o terminal e execute:
+### Fluxo simplificado
+
+```text
+             CONECTA
+                |
+        Autenticação
+                |
+       +--------+--------+
+       |                 |
+     CLIENTE         PROFISSIONAL
+       |                 |
+ Buscar profissionais   Receber solicitações
+       |                 |
+ Consultar perfil       Analisar solicitação
+       |                 |
+ Solicitar orçamento    Enviar proposta
+       |                 |
+       +--------+--------+
+                |
+       Acompanhar propostas
+```
+
+## 🧰 Pré-requisitos
+
+Para executar o projeto localmente, é necessário ter:
+
+- Node.js instalado.
+- npm (gerenciador de pacotes).
+- Git.
+- Uma conta e um projeto no Supabase.
+
+## 🚀 Como executar o projeto localmente
+
+### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/LuizDev1/Conecta.git
@@ -66,144 +127,105 @@ Entre na pasta do projeto:
 cd Conecta
 ```
 
-### 3. Instalar as dependências
-
-Execute o comando:
+### 2. Instalar as dependências
 
 ```bash
 npm install
 ```
 
-### 4. Configurar o Supabase
+### 3. Configurar as variáveis de ambiente
 
-A aplicação utiliza o Supabase para autenticação e armazenamento dos dados.
+Crie um arquivo chamado `.env.local` na raiz do projeto.
 
-Crie um projeto no [painel do Supabase](https://supabase.com/dashboard) e obtenha as informações de conexão em:
-
-**Project Settings → API**
-
-Na raiz do projeto, existe um arquivo `.env.example`. Crie uma cópia dele com o nome `.env.local`:
-
-```bash
-cp .env.example .env.local
-```
-
-No Windows PowerShell, caso prefira, utilize:
-
-```powershell
-Copy-Item .env.example .env.local
-```
-
-Abra o arquivo `.env.local` e preencha as variáveis:
+Adicione as seguintes variáveis:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua-chave-publicavel
+NEXT_PUBLIC_SUPABASE_URL=sua_url_do_supabase
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua_chave_publica
 ```
 
-Substitua os valores de exemplo pelas informações do seu próprio projeto Supabase.
+Os valores podem ser encontrados nas configurações do projeto Supabase, na seção de API.
 
-**Importante:** nunca publique senhas, tokens administrativos ou chaves `service_role` no repositório. O arquivo `.env.local` contém configurações locais e não deve ser enviado ao Git.
+> **Importante:** substitua os valores de exemplo pelas credenciais do seu próprio projeto Supabase. Nunca publique chaves privadas, senhas ou arquivos de ambiente com credenciais reais no repositório.
 
-### 5. Configurar o banco de dados
+### 4. Executar a aplicação
 
-As instruções e os arquivos SQL necessários estão no diretório `supabase/`.
-
-Para preparar o banco de dados:
-
-1. Acesse o painel do seu projeto Supabase.
-2. Abra o **SQL Editor**.
-3. Localize os arquivos SQL de migração no repositório, em `supabase/migrations/supabase/migrations/`.
-4. Execute as migrações em ordem numérica, começando pela criação dos perfis e seguindo pelas migrações do marketplace e de permissões.
-5. Confira se as tabelas e políticas de segurança foram criadas corretamente.
-
-Os arquivos de migração devem ser executados uma única vez, na ordem indicada. Não execute novamente migrações que já tenham sido aplicadas.
-
-### 6. Executar a aplicação
-
-Com as dependências instaladas e o Supabase configurado, inicie o servidor de desenvolvimento:
+Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
 ```
 
-A aplicação estará disponível no endereço:
+A aplicação estará disponível em:
 
-**http://localhost:3000**
+```text
+http://localhost:3000
+```
 
-Para encerrar o servidor, utilize `Ctrl + C` no terminal.
-
-## Scripts disponíveis
-
-Os seguintes comandos podem ser executados na raiz do projeto:
+## 📦 Scripts disponíveis
 
 | Comando | Descrição |
 |---|---|
-| `npm run dev` | Inicia o servidor de desenvolvimento |
+| `npm install` | Instala as dependências |
+| `npm run dev` | Inicia o ambiente de desenvolvimento |
 | `npm run build` | Gera a versão de produção |
-| `npm run start` | Inicia a aplicação em modo de produção |
-| `npm run lint` | Executa a verificação estática do código com ESLint |
+| `npm run start` | Inicia a aplicação em produção |
+| `npm run lint` | Executa a análise estática do código |
 
-## Estrutura do projeto
+## 🔑 Contas demonstrativas
 
-A organização principal dos diretórios é:
+Para facilitar a avaliação e demonstração das funcionalidades, a plataforma disponibiliza contas previamente cadastradas.
+
+**Senha padrão de todas as contas:**
 
 ```text
-Conecta/
-├── app/                  # Páginas e rotas da aplicação
-│   ├── auth/             # Fluxos de autenticação
-│   ├── cliente/          # Área do cliente
-│   ├── profissional/     # Área do profissional
-│   └── profissionais/    # Listagem e perfis públicos
-├── components/           # Componentes reutilizáveis
-│   └── ui/               # Componentes de interface
-├── lib/                  # Bibliotecas e configurações
-│   └── supabase/         # Clientes e integração com Supabase
-├── public/               # Arquivos estáticos
-├── supabase/
-│   ├── migrations/       # Migrações do banco de dados
-│   ├── seed.sql          # Dados demonstrativos
-│   └── README.md         # Orientações de preparação do Supabase
-├── .env.example          # Modelo das variáveis de ambiente
-├── package.json          # Dependências e scripts
-└── README.md             # Documentação do projeto
+Conecta2026!
 ```
 
-## Dados demonstrativos
+### Conta de cliente
 
-O projeto disponibiliza um arquivo `supabase/seed.sql` para auxiliar na preparação de dados demonstrativos.
+| E-mail | Senha |
+|---|---|
+| `cliente.demo@conecta.local` | `Conecta2026!` |
 
-Esse arquivo configura perfis, profissionais, solicitações e propostas de exemplo. Entretanto, ele **não cria automaticamente as contas de autenticação**.
+### Contas de profissionais
 
-Para utilizar os dados demonstrativos:
+| Perfil | E-mail | Senha |
+|---|---|---|
+| Técnico em Informática | `profissional.pc@conecta.local` | `Conecta2026!` |
+| Técnico em Redes | `profissional.redes@conecta.local` | `Conecta2026!` |
+| Técnico em Hardware | `profissional.hardware@conecta.local` | `Conecta2026!` |
 
-1. Crie as contas necessárias em **Supabase → Authentication → Users**, seguindo as orientações de `supabase/README.md`.
-2. Confirme que os perfis correspondentes foram criados.
-3. Execute o arquivo `supabase/seed.sql` no SQL Editor.
-4. Acesse a aplicação e teste os fluxos de cliente e profissional.
+> **Atenção:** essas credenciais são destinadas exclusivamente à demonstração e avaliação acadêmica do projeto. Não utilize essas contas para armazenar informações pessoais ou dados reais. As contas e os dados demonstrativos pertencem ao ambiente de homologação da aplicação.
 
-As contas demonstrativas são destinadas à apresentação e aos testes do MVP. Não compartilhe senhas ou credenciais administrativas publicamente.
+## ☁️ Hospedagem e publicação
 
-## Escopo do MVP
+A aplicação está hospedada na Vercel, com integração ao repositório GitHub.
 
-O projeto prioriza a demonstração do fluxo principal da plataforma:
+O Supabase é utilizado como serviço de backend, fornecendo autenticação e banco de dados.
 
-1. O cliente acessa a listagem de profissionais.
-2. Consulta o perfil do profissional escolhido.
-3. Envia uma solicitação de orçamento.
-4. O profissional visualiza a solicitação recebida.
-5. O profissional envia uma proposta.
-6. O cliente consulta a proposta recebida.
+**Endereço da aplicação:**
 
-Recursos como pagamentos integrados, chat em tempo real, sistema de avaliações e reputação e mediação de serviços não fazem parte da implementação atual do MVP.
+[https://conecta-gilt-two.vercel.app/](https://conecta-gilt-two.vercel.app/)
 
-## Finalidade acadêmica
+A integração com o GitHub permite que novas alterações na branch principal sejam utilizadas para gerar novas versões publicadas da aplicação.
 
-A Conecta foi desenvolvida como um projeto acadêmico para explorar uma solução digital voltada à conexão entre clientes e profissionais de informática.
+## 📱 Responsividade
 
-O sistema tem finalidade demonstrativa e educacional. Sua implementação permite apresentar o funcionamento do fluxo principal proposto, servindo como base para futuras melhorias, testes com usuários e evolução da solução.
+A interface foi desenvolvida considerando diferentes tamanhos de tela, permitindo o acesso por computadores, tablets e dispositivos móveis.
 
-## Repositório
+A proposta visual prioriza uma experiência minimalista, com navegação clara, componentes padronizados e uma identidade visual consistente.
 
-- **GitHub:** https://github.com/LuizDev1/Conecta
-- **Tecnologias principais:** Next.js, React, TypeScript e Supabase.
+## 🚧 Limitações e escopo do MVP
+
+A versão atual da Conecta tem como foco validar o fluxo principal de conexão entre clientes e profissionais.
+
+Por isso, algumas funcionalidades estão fora do escopo desta versão:
+
+- Processamento de pagamentos pela plataforma.
+- Chat em tempo real entre clientes e profissionais.
+- Sistema de avaliações e reputação.
+- Mediação de conflitos.
+- Agendamento avançado de serviços.
+
+Essas funcionalidades poderão
